@@ -71,6 +71,7 @@ export default function Hero() {
           <div className="flex gap-6 justify-center">
             <a
               href="https://github.com/AbduqodirFotih"
+              aria-label="GitHub"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110"
@@ -79,6 +80,7 @@ export default function Hero() {
             </a>
             <a
               href="https://www.instagram.com/Abduqodir_Fotih"
+              aria-label="Instagram"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110"
@@ -87,6 +89,7 @@ export default function Hero() {
             </a>
             <a
               href="https://t.me/Abduqodir_Fotih"
+              aria-label="Telegram"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110"
@@ -95,6 +98,7 @@ export default function Hero() {
             </a>
             <a
               href="mailto:abduqodirjamolkhonov@gmail.com"
+              aria-label="Email"
               className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110"
             >
               <Mail className="w-6 h-6" />
