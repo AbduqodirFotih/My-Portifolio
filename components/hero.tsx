@@ -19,7 +19,7 @@ export default function Hero() {
   }
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center px-4 z-10">
+    <section id="home" className="relative min-h-screen flex items-center justify-center px-4 pt-24 pb-16 z-10">
       <div className="max-w-5xl mx-auto text-center">
         <div
           className={`transition-all duration-1000 ${
@@ -119,7 +119,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="hidden md:block absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce" aria-hidden="true">
           <ArrowDown className="w-8 h-8 text-primary/50" />
         </div>
       </div>
