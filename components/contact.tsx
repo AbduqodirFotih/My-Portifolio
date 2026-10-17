@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, type FormEvent } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -12,6 +12,40 @@ export default function Contact() {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
   const { t } = useLanguage()
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle")
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const form = e.currentTarget
+    const data = Object.fromEntries(new FormData(form))
+    setStatus("sending")
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
+
+      if (response.ok) {
+        setStatus("success")
+        form.reset()
+        return
+      }
+
+      // Telegram is not configured yet: fall back to a prefilled email.
+      if (response.status === 503) {
+        const subject = encodeURIComponent(`Portfolio: ${data.name}`)
+        const body = encodeURIComponent(`${data.message}
+
+${data.name} <${data.email}>`)
+        window.location.href = `mailto:abduqodirjamolkhonov@gmail.com?subject=${subject}&body=${body}`
+        setStatus("idle")
+        return
+      }
+    } catch {}
+    setStatus("error")
+  }
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -125,13 +159,17 @@ export default function Contact() {
             </div>
 
             <Card className="p-8 bg-card/50 backdrop-blur-sm border-primary/20">
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
+                <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
                     {t.contact.name}
                   </label>
                   <Input
                     id="name"
+                    name="name"
+                    required
+                    maxLength={100}
                     placeholder={t.contact.name}
                     className="bg-background/50 border-primary/20 focus:border-primary"
                   />
@@ -143,6 +181,9 @@ export default function Contact() {
                   </label>
                   <Input
                     id="email"
+                    name="email"
+                    required
+                    maxLength={200}
                     type="email"
                     placeholder={t.contact.email}
                     className="bg-background/50 border-primary/20 focus:border-primary"
@@ -155,6 +196,9 @@ export default function Contact() {
                   </label>
                   <Textarea
                     id="message"
+                    name="message"
+                    required
+                    maxLength={3000}
                     placeholder={t.contact.message}
                     rows={5}
                     className="bg-background/50 border-primary/20 focus:border-primary resize-none"
@@ -165,10 +209,22 @@ export default function Contact() {
                   type="submit"
                   className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
                   size="lg"
+                  disabled={status === "sending"}
                 >
-                  <span>{t.contact.send}</span>
+                  <span>{status === "sending" ? t.contact.sending : t.contact.send}</span>
                   <SendIcon className="w-4 h-4 ml-2" />
                 </Button>
+
+                {status === "success" && (
+                  <p className="text-sm text-emerald-400 text-center" role="status">
+                    {t.contact.success}
+                  </p>
+                )}
+                {status === "error" && (
+                  <p className="text-sm text-destructive text-center" role="alert">
+                    {t.contact.error}
+                  </p>
+                )}
               </form>
             </Card>
           </div>
