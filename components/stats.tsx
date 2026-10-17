@@ -72,23 +72,23 @@ export default function Stats() {
     <section ref={sectionRef} className="relative py-20 px-4 z-10">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <Card className="p-8 bg-card/50 backdrop-blur-sm border-primary/20 text-center hover:scale-105 transition-transform">
-            <div className="text-5xl font-bold text-primary mb-2">{counts.experience}+</div>
+          <Card className="p-6 md:p-8 bg-card/50 backdrop-blur-sm border-primary/20 text-center hover:scale-105 transition-transform">
+            <div className="text-4xl md:text-5xl font-bold text-primary mb-2">{counts.experience}+</div>
             <div className="text-muted-foreground font-medium">{t.stats.experience}</div>
           </Card>
 
-          <Card className="p-8 bg-card/50 backdrop-blur-sm border-secondary/20 text-center hover:scale-105 transition-transform">
-            <div className="text-5xl font-bold text-secondary mb-2">{counts.projects}+</div>
+          <Card className="p-6 md:p-8 bg-card/50 backdrop-blur-sm border-secondary/20 text-center hover:scale-105 transition-transform">
+            <div className="text-4xl md:text-5xl font-bold text-secondary mb-2">{counts.projects}+</div>
             <div className="text-muted-foreground font-medium">{t.stats.projects}</div>
           </Card>
 
-          <Card className="p-8 bg-card/50 backdrop-blur-sm border-primary/20 text-center hover:scale-105 transition-transform">
-            <div className="text-5xl font-bold text-primary mb-2">{counts.technologies}+</div>
+          <Card className="p-6 md:p-8 bg-card/50 backdrop-blur-sm border-primary/20 text-center hover:scale-105 transition-transform">
+            <div className="text-4xl md:text-5xl font-bold text-primary mb-2">{counts.technologies}+</div>
             <div className="text-muted-foreground font-medium">{t.stats.technologies}</div>
           </Card>
 
-          <Card className="p-8 bg-card/50 backdrop-blur-sm border-secondary/20 text-center hover:scale-105 transition-transform">
-            <div className="text-5xl font-bold text-secondary mb-2">{counts.linesOfCode.toLocaleString()}+</div>
+          <Card className="p-6 md:p-8 bg-card/50 backdrop-blur-sm border-secondary/20 text-center hover:scale-105 transition-transform">
+            <div className="text-4xl md:text-5xl font-bold text-secondary mb-2">{Math.round(counts.linesOfCode / 1000)}K+</div>
             <div className="text-muted-foreground font-medium">{t.stats.code}</div>
           </Card>
         </div>
