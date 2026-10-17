@@ -72,13 +72,13 @@ ${data.name} <${data.email}>`)
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-center">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-center">
             <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               {t.contact.title}
             </span>
           </h2>
 
-          <p className="text-xl text-muted-foreground text-center mb-16 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-muted-foreground text-center mb-16 max-w-3xl mx-auto leading-relaxed">
             {t.contact.description}
           </p>
 
@@ -158,7 +158,7 @@ ${data.name} <${data.email}>`)
               </div>
             </div>
 
-            <Card className="p-8 bg-card/50 backdrop-blur-sm border-primary/20">
+            <Card className="p-6 md:p-8 bg-card/50 backdrop-blur-sm border-primary/20">
               <form className="space-y-6" onSubmit={handleSubmit}>
                 <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
                 <div>
