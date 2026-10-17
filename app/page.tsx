@@ -8,6 +8,7 @@ import Contact from "@/components/contact"
 import StarField from "@/components/star-field"
 import FloatingElements from "@/components/floating-elements"
 import Navbar from "@/components/navbar"
+import BackToTop from "@/components/back-to-top"
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <Projects />
       <Experience />
       <Contact />
+      <BackToTop />
     </main>
   )
 }
