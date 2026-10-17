@@ -60,7 +60,9 @@ export default function Skills() {
               return (
                 <Card
                   key={group.category}
-                  className="p-6 md:p-8 glass-effect hover:bg-primary/5 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
+                  className={`p-6 md:p-8 glass-effect hover:bg-primary/5 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl ${
+                    index === skillGroups.length - 1 && skillGroups.length % 2 === 1 ? "md:col-span-2" : ""
+                  }`}
                   style={{
                     animationDelay: `${index * 100}ms`,
                   }}
