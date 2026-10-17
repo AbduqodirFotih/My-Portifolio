@@ -7,14 +7,14 @@ import Stats from "@/components/stats"
 import Contact from "@/components/contact"
 import StarField from "@/components/star-field"
 import FloatingElements from "@/components/floating-elements"
-import LanguageSwitcher from "@/components/language-switcher"
+import Navbar from "@/components/navbar"
 
 export default function Home() {
   return (
     <main className="relative min-h-screen overflow-hidden">
       <StarField />
       <FloatingElements />
-      <LanguageSwitcher />
+      <Navbar />
       <Hero />
       <About />
       <Stats />

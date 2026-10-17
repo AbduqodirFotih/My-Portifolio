@@ -18,7 +18,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 z-10">
+    <section id="home" className="relative min-h-screen flex items-center justify-center px-4 z-10">
       <div className="max-w-5xl mx-auto text-center">
         <div
           className={`transition-all duration-1000 ${

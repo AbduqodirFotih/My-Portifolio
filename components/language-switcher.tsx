@@ -17,7 +17,7 @@ export default function LanguageSwitcher() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon" className="fixed top-6 right-6 z-50 bg-background/80 backdrop-blur-sm">
+        <Button variant="outline" size="icon" className="bg-background/50 backdrop-blur-sm" aria-label="Language">
           <Languages className="h-5 w-5" />
         </Button>
       </DropdownMenuTrigger>
