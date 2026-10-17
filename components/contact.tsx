@@ -85,7 +85,7 @@ ${data.name} <${data.email}>`)
           <div className="grid md:grid-cols-2 gap-8">
             <div className="space-y-6">
               <Card className="p-6 bg-card/50 backdrop-blur-sm border-primary/20">
-                <div className="flex items-center gap-4 mb-4">
+                <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
                     <Mail className="w-6 h-6 text-primary" />
                   </div>
@@ -102,7 +102,7 @@ ${data.name} <${data.email}>`)
               </Card>
 
               <Card className="p-6 bg-card/50 backdrop-blur-sm border-secondary/20">
-                <div className="flex items-center gap-4 mb-4">
+                <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
                     <Phone className="w-6 h-6 text-secondary" />
                   </div>
@@ -119,7 +119,7 @@ ${data.name} <${data.email}>`)
               </Card>
 
               <Card className="p-6 bg-card/50 backdrop-blur-sm border-primary/20">
-                <div className="flex items-center gap-4 mb-4">
+                <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
                     <MapPin className="w-6 h-6 text-primary" />
                   </div>
