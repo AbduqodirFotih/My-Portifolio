@@ -36,7 +36,7 @@ export default function About() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <h2 className="text-6xl md:text-7xl font-bold mb-8 text-center">
+          <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-8 text-center">
             <span className="gradient-text">{t.about.title}</span>
           </h2>
 
@@ -45,7 +45,7 @@ export default function About() {
           </p>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="p-10 glass-effect hover:bg-primary/10 transition-all duration-500 hover:scale-105 hover:shadow-2xl group">
+            <Card className="p-8 md:p-10 glass-effect hover:bg-primary/10 transition-all duration-500 hover:scale-105 hover:shadow-2xl group">
               <div className="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                 <Code2 className="w-10 h-10 text-background" />
               </div>
@@ -53,7 +53,7 @@ export default function About() {
               <p className="text-muted-foreground leading-relaxed text-lg">{t.about.frontend.description}</p>
             </Card>
 
-            <Card className="p-10 glass-effect hover:bg-secondary/10 transition-all duration-500 hover:scale-105 hover:shadow-2xl group">
+            <Card className="p-8 md:p-10 glass-effect hover:bg-secondary/10 transition-all duration-500 hover:scale-105 hover:shadow-2xl group">
               <div className="w-20 h-20 bg-gradient-to-br from-secondary to-primary rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                 <Database className="w-10 h-10 text-background" />
               </div>
@@ -61,7 +61,7 @@ export default function About() {
               <p className="text-muted-foreground leading-relaxed text-lg">{t.about.backend.description}</p>
             </Card>
 
-            <Card className="p-10 glass-effect hover:bg-primary/10 transition-all duration-500 hover:scale-105 hover:shadow-2xl group">
+            <Card className="p-8 md:p-10 glass-effect hover:bg-primary/10 transition-all duration-500 hover:scale-105 hover:shadow-2xl group">
               <div className="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                 <Sparkles className="w-10 h-10 text-background" />
               </div>
