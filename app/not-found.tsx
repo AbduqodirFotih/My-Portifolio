@@ -1,11 +1,15 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import StarField from "@/components/star-field"
 import { useLanguage } from "@/lib/language-context"
 
 export default function NotFound() {
   const { t } = useLanguage()
+  const [path, setPath] = useState("")
+
+  useEffect(() => setPath(window.location.pathname), [])
 
   return (
     <main className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
@@ -20,7 +24,7 @@ export default function NotFound() {
         <div className="p-6 space-y-2 text-sm md:text-base">
           <p>
             <span className="text-primary">fotih@portfolio</span>:<span className="text-secondary">~</span>$ cd{" "}
-            {typeof window !== "undefined" ? window.location.pathname : ""}
+            {path}
           </p>
           <p className="text-red-400">bash: cd: {t.notFound.error}</p>
           <p className="text-7xl md:text-8xl font-bold gradient-text py-6">404</p>
