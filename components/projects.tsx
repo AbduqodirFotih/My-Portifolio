@@ -61,10 +61,18 @@ export default function Projects() {
                   key={project.title}
                   className="p-6 md:p-10 glass-effect hover:bg-primary/5 transition-all duration-500 hover:scale-[1.03] hover:shadow-2xl group"
                 >
-                  <div
-                    className={`w-20 h-20 bg-gradient-to-br ${project.gradient} rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg`}
-                  >
-                    <Icon className="w-10 h-10 text-background" />
+                  <div className="flex items-start justify-between mb-8">
+                    <div
+                      className={`w-20 h-20 bg-gradient-to-br ${project.gradient} rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg`}
+                    >
+                      <Icon className="w-10 h-10 text-background" />
+                    </div>
+                    {"url" in project && project.url && (
+                      <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-400/30 bg-emerald-400/10 text-emerald-300 text-xs font-semibold uppercase tracking-wider">
+                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                        Live
+                      </span>
+                    )}
                   </div>
 
                   <h3 className="text-2xl md:text-3xl font-bold mb-6 text-foreground">{project.title}</h3>
@@ -97,7 +105,7 @@ export default function Projects() {
                     ))}
                   </div>
 
-                  {project.url && (
+                  {"url" in project && project.url && (
                     <a href={project.url} target="_blank" rel="noopener noreferrer">
                       <Button
                         className="w-full bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
