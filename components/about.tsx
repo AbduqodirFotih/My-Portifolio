@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import { Card } from "@/components/ui/card"
 import { Code2, Database, Sparkles } from "lucide-react"
 import { useLanguage } from "@/lib/language-context"
+import Terminal from "@/components/terminal"
 
 export default function About() {
   const [isVisible, setIsVisible] = useState(false)
@@ -39,7 +40,7 @@ export default function About() {
             <span className="gradient-text">{t.about.title}</span>
           </h2>
 
-          <p className="text-2xl text-muted-foreground text-center mb-20 max-w-3xl mx-auto leading-relaxed font-light">
+          <p className="text-xl md:text-2xl text-muted-foreground text-center mb-20 max-w-3xl mx-auto leading-relaxed font-light">
             {t.about.description}
           </p>
 
@@ -67,6 +68,16 @@ export default function About() {
               <h3 className="text-2xl font-bold mb-4 text-foreground">{t.about.dataAnalysis.title}</h3>
               <p className="text-muted-foreground leading-relaxed text-lg">{t.about.dataAnalysis.description}</p>
             </Card>
+          </div>
+
+          <div className="grid md:grid-cols-5 gap-8 items-center mt-20">
+            <div className="md:col-span-2">
+              <h3 className="text-3xl font-bold mb-4 gradient-text">{t.terminal.title}</h3>
+              <p className="text-muted-foreground leading-relaxed text-lg">{t.about.passion}</p>
+            </div>
+            <div className="md:col-span-3">
+              <Terminal />
+            </div>
           </div>
         </div>
       </div>
