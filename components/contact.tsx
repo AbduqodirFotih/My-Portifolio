@@ -73,7 +73,7 @@ export default function Contact() {
                     <Phone className="w-6 h-6 text-secondary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground">{t.contact.info}</h3>
+                    <h3 className="font-semibold text-foreground">{t.contact.phone}</h3>
                     <a
                       href="tel:+998200004411"
                       className="text-muted-foreground hover:text-secondary transition-colors"
@@ -90,7 +90,7 @@ export default function Contact() {
                     <MapPin className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground">{t.contact.location}</h3>
+                    <h3 className="font-semibold text-foreground">{t.contact.address}</h3>
                     <p className="text-muted-foreground">{t.contact.location}</p>
                   </div>
                 </div>
@@ -175,7 +175,7 @@ export default function Contact() {
 
           <div className="mt-16 text-center">
             <p className="text-muted-foreground">
-              © 2025 {t.name}. {t.contact.footer}.
+              © {new Date().getFullYear()} {t.name}. {t.contact.footer}.
             </p>
             <p className="text-sm text-muted-foreground mt-4 italic max-w-2xl mx-auto">
               &ldquo;{t.contact.quote}&rdquo;
