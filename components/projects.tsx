@@ -45,11 +45,11 @@ export default function Projects() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <h2 className="text-6xl md:text-7xl font-bold mb-8 text-center">
+          <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-8 text-center">
             <span className="gradient-text">{t.projects.title}</span>
           </h2>
 
-          <p className="text-2xl text-muted-foreground text-center mb-20 max-w-3xl mx-auto leading-relaxed font-light">
+          <p className="text-xl md:text-2xl text-muted-foreground text-center mb-16 md:mb-20 max-w-3xl mx-auto leading-relaxed font-light">
             {t.projects.description}
           </p>
 
@@ -59,7 +59,7 @@ export default function Projects() {
               return (
                 <Card
                   key={project.title}
-                  className="p-10 glass-effect hover:bg-primary/5 transition-all duration-500 hover:scale-[1.03] hover:shadow-2xl group"
+                  className="p-6 md:p-10 glass-effect hover:bg-primary/5 transition-all duration-500 hover:scale-[1.03] hover:shadow-2xl group"
                 >
                   <div
                     className={`w-20 h-20 bg-gradient-to-br ${project.gradient} rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg`}
@@ -67,7 +67,7 @@ export default function Projects() {
                     <Icon className="w-10 h-10 text-background" />
                   </div>
 
-                  <h3 className="text-3xl font-bold mb-6 text-foreground">{project.title}</h3>
+                  <h3 className="text-2xl md:text-3xl font-bold mb-6 text-foreground">{project.title}</h3>
 
                   <p className="text-muted-foreground mb-8 leading-relaxed text-lg">{project.description}</p>
 
@@ -75,7 +75,7 @@ export default function Projects() {
                     <h4 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-wider">
                       {t.projects.mainFeatures}
                     </h4>
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid sm:grid-cols-2 gap-3">
                       {project.features.map((feature) => (
                         <div key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
                           <div className="w-2 h-2 rounded-full bg-gradient-to-r from-primary to-secondary" />
