@@ -30,7 +30,7 @@ export default function Hero() {
             <div className="relative w-24 h-24 group">
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 via-blue-500 to-purple-600 rounded-2xl blur-2xl opacity-60 group-hover:opacity-100 transition-all duration-500 animate-pulse" />
               <div className="relative w-full h-full bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 border-2 border-cyan-300/30">
-                <span className="text-5xl font-black text-white drop-shadow-2xl">A</span>
+                <span className="text-4xl font-black text-white drop-shadow-2xl tracking-tight">AF</span>
                 <div className="absolute inset-0 bg-gradient-to-t from-transparent to-white/20 rounded-2xl" />
               </div>
               <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-2xl opacity-20 blur-xl group-hover:opacity-40 transition-opacity" />
