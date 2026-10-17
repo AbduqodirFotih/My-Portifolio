@@ -49,6 +49,23 @@ export const viewport: Viewport = {
   themeColor: "#03060f",
 }
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Abduqodir Fotih",
+  url: siteUrl,
+  jobTitle: "FullStack Developer",
+  email: "mailto:abduqodirjamolkhonov@gmail.com",
+  address: { "@type": "PostalAddress", addressLocality: "Tashkent", addressCountry: "UZ" },
+  alumniOf: { "@type": "CollegeOrUniversity", name: "PDP University" },
+  knowsAbout: ["Python", "FastAPI", "Next.js", "JavaScript", "MySQL", "Docker", "CI/CD"],
+  sameAs: [
+    "https://github.com/AbduqodirFotih",
+    "https://t.me/Abduqodir_Fotih",
+    "https://www.instagram.com/Abduqodir_Fotih",
+  ],
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -57,6 +74,10 @@ export default function RootLayout({
   return (
     <html lang="uz" className="scroll-smooth">
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <LanguageProvider>
           <Suspense fallback={null}>{children}</Suspense>
         </LanguageProvider>
