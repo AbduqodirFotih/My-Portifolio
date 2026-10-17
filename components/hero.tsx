@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowDown, Github, Mail, Instagram, Send } from "lucide-react"
 import { useLanguage } from "@/lib/language-context"
+import Typewriter from "@/components/typewriter"
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false)
@@ -36,13 +37,25 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="inline-block mb-6 px-5 py-2 glass-effect rounded-full">
+          <div className="flex justify-center mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-400/30 bg-emerald-400/10 text-emerald-300 text-sm">
+              <span className="relative flex w-2 h-2">
+                <span className="absolute inline-flex w-full h-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
+                <span className="relative inline-flex w-2 h-2 rounded-full bg-emerald-400" />
+              </span>
+              {t.hero.available}
+            </div>
+          </div>
+
+          <div className="inline-block mb-6 px-5 py-2 glass-effect rounded-full min-h-[2.25rem]">
             <span className="text-primary font-mono text-sm">
-              {"<"} {t.hero.badge} {" />"}
+              {"< "}
+              <Typewriter words={t.hero.roles} />
+              {" />"}
             </span>
           </div>
 
-          <h1 className="text-6xl md:text-8xl font-bold mb-6 text-balance leading-tight">
+          <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold mb-6 text-balance leading-tight">
             <span className="gradient-text">{t.name}</span>
           </h1>
 

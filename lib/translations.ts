@@ -12,6 +12,8 @@ export const translations = {
     },
     hero: {
       badge: "FullStack Developer",
+      roles: ["FullStack Developer", "Backend · Python & FastAPI", "Frontend · Next.js", "DevOps · Docker & CI/CD"],
+      available: "Yangi loyihalarga ochiqman",
       greeting: "Texnologiya olamiga xush kelibsiz",
       description:
         "Men 3+ yillik tajribaga ega FullStack dasturchi va PDP University 3-kurs talabasiman. 20+ loyihani muvaffaqiyatli yakunladim.",
@@ -172,6 +174,8 @@ export const translations = {
     },
     hero: {
       badge: "FullStack Разработчик",
+      roles: ["FullStack Developer", "Backend · Python & FastAPI", "Frontend · Next.js", "DevOps · Docker & CI/CD"],
+      available: "Открыт для новых проектов",
       greeting: "Добро пожаловать в мир технологий",
       description:
         "Я FullStack разработчик с опытом более 3 лет и студент 3 курса PDP University. Успешно завершил более 20 проектов.",
@@ -336,6 +340,8 @@ export const translations = {
     },
     hero: {
       badge: "FullStack Developer",
+      roles: ["FullStack Developer", "Backend · Python & FastAPI", "Frontend · Next.js", "DevOps · Docker & CI/CD"],
+      available: "Open to new projects",
       greeting: "Welcome to the world of technology",
       description:
         "I'm a FullStack developer with 3+ years of experience and a 3rd-year student at PDP University. I've successfully completed 20+ projects.",
