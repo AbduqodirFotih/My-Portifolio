@@ -64,13 +64,13 @@ export default function Experience() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-center">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-center">
             <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
               {t.experience.title}
             </span>
           </h2>
 
-          <p className="text-xl text-muted-foreground text-center mb-16 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-muted-foreground text-center mb-16 max-w-3xl mx-auto leading-relaxed">
             {t.experience.description}
           </p>
 
