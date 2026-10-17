@@ -155,6 +155,11 @@ export const translations = {
       quote: "Intizom - bu erkinlikni cheklash emas. Bu barcha keraksiz narsalarni kesib tashlashdir.",
       quoteAuthor: "Bryus Li",
     },
+    notFound: {
+      error: "Bunday sahifa topilmadi",
+      description: "Siz qidirgan sahifa mavjud emas yoki ko'chirilgan.",
+      back: "Bosh sahifaga qaytish",
+    },
   },
   ru: {
     name: "Абдукодир Фотих",
@@ -314,6 +319,11 @@ export const translations = {
       quote: "Дисциплина — это не ограничение свободы. Это отсечение всего лишнего.",
       quoteAuthor: "Брюс Ли",
     },
+    notFound: {
+      error: "Страница не найдена",
+      description: "Страница, которую вы ищете, не существует или была перемещена.",
+      back: "Вернуться на главную",
+    },
   },
   en: {
     name: "Abduqodir Fotih",
@@ -467,6 +477,11 @@ export const translations = {
       footer: "All rights reserved",
       quote: "Discipline is not a limitation of freedom. It is cutting off everything unnecessary.",
       quoteAuthor: "Bruce Lee",
+    },
+    notFound: {
+      error: "No such page",
+      description: "The page you are looking for does not exist or has been moved.",
+      back: "Back to home",
     },
   },
 }
