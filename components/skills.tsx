@@ -46,11 +46,11 @@ export default function Skills() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <h2 className="text-6xl md:text-7xl font-bold mb-8 text-center">
+          <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-8 text-center">
             <span className="gradient-text">{t.skills.title}</span>
           </h2>
 
-          <p className="text-2xl text-muted-foreground text-center mb-20 max-w-3xl mx-auto leading-relaxed font-light">
+          <p className="text-xl md:text-2xl text-muted-foreground text-center mb-16 md:mb-20 max-w-3xl mx-auto leading-relaxed font-light">
             {t.skills.description}
           </p>
 
@@ -60,7 +60,7 @@ export default function Skills() {
               return (
                 <Card
                   key={group.category}
-                  className="p-8 glass-effect hover:bg-primary/5 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
+                  className="p-6 md:p-8 glass-effect hover:bg-primary/5 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
                   style={{
                     animationDelay: `${index * 100}ms`,
                   }}
