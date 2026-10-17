@@ -12,9 +12,6 @@ export const metadata: Metadata = {
   description:
     "3+ yillik tajribaga ega FullStack dasturchi, PDP University talabasi. Python, FastAPI, Next.js, Docker va boshqa zamonaviy texnologiyalar bilan 20+ loyiha yaratilgan.",
   generator: "v0.app",
-  icons: {
-    icon: "/icon.jpg",
-  },
 }
 
 export default function RootLayout({
