@@ -1,12 +1,12 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useRef } from "react"
 
 const codeSymbols = ["{ }", "< />", "=>", "λ", "∑", "π", "∞", "∆", "α", "β", "θ", "→", "⇒"]
+const ELEMENT_COUNT = 20
+const TRAIL_LENGTH = 8
 
 interface FloatingElement {
-  id: number
-  symbol: string
   x: number
   y: number
   baseX: number
@@ -15,139 +15,131 @@ interface FloatingElement {
   velocityY: number
 }
 
-interface MouseTrail {
-  id: number
-  x: number
-  y: number
-  opacity: number
-  scale: number
-}
-
+// Positions live in refs and are written straight to the DOM, so the
+// animation never re-renders React (the old version re-rendered every frame).
 export default function FloatingElements() {
-  const [elements, setElements] = useState<FloatingElement[]>([])
-  const [mousePos, setMousePos] = useState({ x: 50, y: 50 })
-  const [mouseTrail, setMouseTrail] = useState<MouseTrail[]>([])
-  const animationFrameRef = useRef<number>()
-  const trailIdRef = useRef(0)
+  const symbolRefs = useRef<(HTMLDivElement | null)[]>([])
+  const trailRefs = useRef<(HTMLDivElement | null)[]>([])
+  const glowRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const newElements: FloatingElement[] = Array.from({ length: 20 }, (_, i) => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    const hasMouse = window.matchMedia("(pointer: fine)").matches
+
+    const elements: FloatingElement[] = symbolRefs.current.map(() => {
       const x = Math.random() * 100
       const y = Math.random() * 100
-      return {
-        id: i,
-        symbol: codeSymbols[Math.floor(Math.random() * codeSymbols.length)],
-        x,
-        y,
-        baseX: x,
-        baseY: y,
-        velocityX: 0,
-        velocityY: 0,
-      }
+      return { x, y, baseX: x, baseY: y, velocityX: 0, velocityY: 0 }
     })
-    setElements(newElements)
-  }, [])
+    const trail = Array.from({ length: TRAIL_LENGTH }, () => ({ x: 0, y: 0, opacity: 0, scale: 1 }))
+    let trailIndex = 0
+    const mouse = { x: -100, y: -100 }
 
-  useEffect(() => {
+    const render = () => {
+      elements.forEach((element, i) => {
+        const node = symbolRefs.current[i]
+        if (node) {
+          node.style.left = `${element.x}%`
+          node.style.top = `${element.y}%`
+          node.style.opacity = "1"
+        }
+      })
+    }
+
+    render()
+    if (reduceMotion || !hasMouse) return
+
     const handleMouseMove = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth) * 100
-      const y = (e.clientY / window.innerHeight) * 100
-      setMousePos({ x, y })
+      mouse.x = (e.clientX / window.innerWidth) * 100
+      mouse.y = (e.clientY / window.innerHeight) * 100
 
       if (Math.random() > 0.7) {
-        const newTrail: MouseTrail = {
-          id: trailIdRef.current++,
-          x,
-          y,
-          opacity: 0.6,
-          scale: 1,
-        }
-        setMouseTrail((prev) => [...prev.slice(-8), newTrail])
+        trail[trailIndex] = { x: mouse.x, y: mouse.y, opacity: 0.6, scale: 1 }
+        trailIndex = (trailIndex + 1) % TRAIL_LENGTH
       }
+    }
+
+    let frame = 0
+    const animate = () => {
+      elements.forEach((element) => {
+        const dx = mouse.x - element.x
+        const dy = mouse.y - element.y
+        const distance = Math.sqrt(dx * dx + dy * dy)
+
+        if (distance < 20 && distance > 0) {
+          const force = (20 - distance) / 20
+          element.velocityX -= (dx / distance) * force * 0.3
+          element.velocityY -= (dy / distance) * force * 0.3
+        }
+
+        element.x += element.velocityX
+        element.y += element.velocityY
+        element.velocityX *= 0.92
+        element.velocityY *= 0.92
+
+        const returnForce = 0.015
+        element.velocityX += (element.baseX - element.x) * returnForce
+        element.velocityY += (element.baseY - element.y) * returnForce
+
+        element.x = Math.max(0, Math.min(100, element.x))
+        element.y = Math.max(0, Math.min(100, element.y))
+      })
+      render()
+
+      trail.forEach((dot, i) => {
+        dot.opacity *= 0.92
+        dot.scale *= 0.98
+        const node = trailRefs.current[i]
+        if (node) {
+          node.style.left = `${dot.x}%`
+          node.style.top = `${dot.y}%`
+          node.style.opacity = String(dot.opacity)
+          node.style.width = node.style.height = `${12 * dot.scale}px`
+        }
+      })
+
+      if (glowRef.current) {
+        glowRef.current.style.left = `${mouse.x}%`
+        glowRef.current.style.top = `${mouse.y}%`
+      }
+
+      frame = requestAnimationFrame(animate)
     }
 
     window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
+    frame = requestAnimationFrame(animate)
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove)
+      cancelAnimationFrame(frame)
+    }
   }, [])
 
-  useEffect(() => {
-    const animate = () => {
-      setElements((prevElements) =>
-        prevElements.map((element) => {
-          const dx = mousePos.x - element.x
-          const dy = mousePos.y - element.y
-          const distance = Math.sqrt(dx * dx + dy * dy)
-
-          if (distance < 20) {
-            const force = (20 - distance) / 20
-            element.velocityX -= (dx / distance) * force * 0.3
-            element.velocityY -= (dy / distance) * force * 0.3
-          }
-
-          element.x += element.velocityX
-          element.y += element.velocityY
-          element.velocityX *= 0.92
-          element.velocityY *= 0.92
-
-          const returnForce = 0.015
-          element.velocityX += (element.baseX - element.x) * returnForce
-          element.velocityY += (element.baseY - element.y) * returnForce
-
-          element.x = Math.max(0, Math.min(100, element.x))
-          element.y = Math.max(0, Math.min(100, element.y))
-
-          return element
-        }),
-      )
-
-      setMouseTrail((prev) =>
-        prev
-          .map((trail) => ({
-            ...trail,
-            opacity: trail.opacity * 0.92,
-            scale: trail.scale * 0.98,
-          }))
-          .filter((trail) => trail.opacity > 0.05),
-      )
-
-      animationFrameRef.current = requestAnimationFrame(animate)
-    }
-
-    animationFrameRef.current = requestAnimationFrame(animate)
-    return () => {
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current)
-      }
-    }
-  }, [mousePos])
-
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-      {elements.map((element) => (
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
+      {Array.from({ length: ELEMENT_COUNT }, (_, i) => (
         <div
-          key={element.id}
-          className="absolute font-mono text-primary/30 transition-all duration-150"
+          key={i}
+          ref={(node) => {
+            symbolRefs.current[i] = node
+          }}
+          className="absolute font-mono text-primary/30 opacity-0"
           style={{
-            left: `${element.x}%`,
-            top: `${element.y}%`,
-            fontSize: `${16 + Math.sin(element.id) * 8}px`,
+            fontSize: `${16 + Math.sin(i) * 8}px`,
             transform: "translate(-50%, -50%)",
           }}
         >
-          {element.symbol}
+          {codeSymbols[i % codeSymbols.length]}
         </div>
       ))}
 
-      {mouseTrail.map((trail) => (
+      {Array.from({ length: TRAIL_LENGTH }, (_, i) => (
         <div
-          key={trail.id}
-          className="absolute rounded-full"
+          key={i}
+          ref={(node) => {
+            trailRefs.current[i] = node
+          }}
+          className="absolute rounded-full opacity-0"
           style={{
-            left: `${trail.x}%`,
-            top: `${trail.y}%`,
-            width: `${12 * trail.scale}px`,
-            height: `${12 * trail.scale}px`,
-            opacity: trail.opacity,
             transform: "translate(-50%, -50%)",
             background: "radial-gradient(circle, rgba(112, 224, 255, 0.6) 0%, rgba(168, 85, 247, 0.4) 100%)",
           }}
@@ -155,10 +147,10 @@ export default function FloatingElements() {
       ))}
 
       <div
-        className="absolute w-48 h-48 rounded-full pointer-events-none transition-all duration-300"
+        ref={glowRef}
+        className="absolute w-48 h-48 rounded-full"
         style={{
-          left: `${mousePos.x}%`,
-          top: `${mousePos.y}%`,
+          left: "-100%",
           transform: "translate(-50%, -50%)",
           background: "radial-gradient(circle, rgba(112, 224, 255, 0.08) 0%, transparent 70%)",
         }}
