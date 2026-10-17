@@ -28,26 +28,31 @@ export default function Experience() {
     return () => observer.disconnect()
   }, [])
 
+  const colorClasses = {
+    primary: { icon: "from-primary to-secondary", badge: "border-primary/30 text-primary" },
+    secondary: { icon: "from-secondary to-primary", badge: "border-secondary/30 text-secondary" },
+  } as const
+
   const timeline = [
     {
       ...t.experience.timeline[0],
       icon: Briefcase,
-      color: "primary",
+      color: "primary" as const,
     },
     {
       ...t.experience.timeline[1],
       icon: Briefcase,
-      color: "secondary",
+      color: "secondary" as const,
     },
     {
       ...t.experience.timeline[2],
       icon: GraduationCap,
-      color: "primary",
+      color: "primary" as const,
     },
     {
       ...t.experience.timeline[3],
       icon: Trophy,
-      color: "secondary",
+      color: "secondary" as const,
     },
   ]
 
@@ -84,13 +89,13 @@ export default function Experience() {
                     style={{ transitionDelay: `${index * 150}ms` }}
                   >
                     <div
-                      className={`absolute left-0 w-16 h-16 bg-gradient-to-br from-${item.color} to-${item.color === "primary" ? "secondary" : "primary"} rounded-xl flex items-center justify-center`}
+                      className={`absolute left-0 w-16 h-16 bg-gradient-to-br ${colorClasses[item.color].icon} rounded-xl flex items-center justify-center shadow-lg`}
                     >
                       <Icon className="w-8 h-8 text-background" />
                     </div>
 
                     <Card className="p-6 bg-card/50 backdrop-blur-sm border-primary/20 hover:border-primary/50 transition-all duration-300">
-                      <Badge variant="outline" className={`mb-3 border-${item.color}/30 text-${item.color}`}>
+                      <Badge variant="outline" className={`mb-3 ${colorClasses[item.color].badge}`}>
                         {item.year}
                       </Badge>
                       <h3 className="text-2xl font-bold mb-2 text-foreground">{item.title}</h3>
