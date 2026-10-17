@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Briefcase, GraduationCap, Trophy } from "lucide-react"
+import { Briefcase, Code2, GraduationCap, Network } from "lucide-react"
 import { useLanguage } from "@/lib/language-context"
 
 export default function Experience() {
@@ -41,17 +41,17 @@ export default function Experience() {
     },
     {
       ...t.experience.timeline[1],
-      icon: Briefcase,
+      icon: GraduationCap,
       color: "secondary" as const,
     },
     {
       ...t.experience.timeline[2],
-      icon: GraduationCap,
+      icon: Code2,
       color: "primary" as const,
     },
     {
       ...t.experience.timeline[3],
-      icon: Trophy,
+      icon: Network,
       color: "secondary" as const,
     },
   ]
