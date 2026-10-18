@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { DoorOpen, ExternalLink, Heart, Sparkles, Wrench } from "lucide-react"
+import { AppWindow, DoorOpen, ExternalLink, Heart, Sparkles, Wrench } from "lucide-react"
 import { useLanguage } from "@/lib/language-context"
 
 export default function Projects() {
@@ -29,7 +29,7 @@ export default function Projects() {
     return () => observer.disconnect()
   }, [])
 
-  const icons = [DoorOpen, Heart, Sparkles, Wrench]
+  const icons = [AppWindow, DoorOpen, Heart, Sparkles, Wrench]
 
   const projects = t.projects.items.map((item, index) => ({
     ...item,
