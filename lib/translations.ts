@@ -75,6 +75,19 @@ export const translations = {
       mainFeatures: "Asosiy Xususiyatlar:",
       items: [
         {
+          title: "Fidelis Oknalar — oknalar.uz",
+          description:
+            "Plastik va alyuminiy romlar, eshiklar, surma va fasad tizimlari ishlab chiqaruvchisi uchun real ishlayotgan sayt. Mijoz katalogdan profil va rangni tanlaydi, narxni so'raydi — so'rov darhol menejerlarning Telegram guruhiga tushadi. Mahsulotlarni admin panel orqali boshqarish mumkin.",
+          features: [
+            "Profil va rang tanlash bilan katalog",
+            "Telegram'ga lid yuborish tizimi",
+            "Mahsulotlar uchun admin panel",
+            "3 tilli interfeys (UZ / RU / EN)",
+          ],
+          tech: ["Next.js", "FastAPI", "Python", "Telegram Bot"],
+          url: "https://oknalar.uz",
+        },
+        {
           title: "MDF Dveri — mdf-dveri.uz",
           description:
             "Toshkentdagi MDF ichki eshiklar ishlab chiqaruvchisi uchun to'liq korporativ sayt va onlayn katalog. 250+ eshik modeli, panellar, deraza va qo'shimcha xizmatlar bitta joyda — mijoz modelni tanlab, savatga qo'shib, telefon yoki Telegram orqali buyurtma beradi.",
