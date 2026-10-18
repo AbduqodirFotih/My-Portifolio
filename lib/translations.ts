@@ -462,6 +462,19 @@ export const translations = {
       mainFeatures: "Main Features:",
       items: [
         {
+          title: "Fidelis Oknalar — oknalar.uz",
+          description:
+            "A live website for a manufacturer of PVC and aluminium windows, doors, sliding and facade systems. Customers pick a profile and colour in the catalog and request a price — the lead lands instantly in the managers' Telegram group. Products are managed through an admin panel.",
+          features: [
+            "Catalog with profile and colour picker",
+            "Lead delivery to Telegram",
+            "Admin panel for products",
+            "3 languages (UZ / RU / EN)",
+          ],
+          tech: ["Next.js", "FastAPI", "Python", "Telegram Bot"],
+          url: "https://oknalar.uz",
+        },
+        {
           title: "MDF Dveri — mdf-dveri.uz",
           description:
             "A complete corporate website and online catalog for a Tashkent manufacturer of MDF interior doors. 250+ door models, panels, windows and extra services in one place — customers pick a model, add it to the cart and order by phone or Telegram.",
