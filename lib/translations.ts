@@ -531,7 +531,7 @@ export const translations = {
           title: "FullStack Developer",
           organization: "Freelance",
           description:
-            "Building and launching websites for real clients: the mdf-dveri.uz corporate site, online invitations and other projects.",
+            "Building and launching websites for real clients: the oknalar.uz and mdf-dveri.uz corporate sites, online invitations and other projects.",
         },
         {
           year: "3rd year",
