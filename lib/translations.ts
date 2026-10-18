@@ -144,7 +144,7 @@ export const translations = {
           title: "FullStack Developer",
           organization: "Freelance",
           description:
-            "Real mijozlar uchun veb-saytlar yaratish va ishga tushirish: mdf-dveri.uz korporativ sayti, onlayn taklifnomalar va boshqa loyihalar.",
+            "Real mijozlar uchun veb-saytlar yaratish va ishga tushirish: oknalar.uz va mdf-dveri.uz korporativ saytlari, onlayn taklifnomalar va boshqa loyihalar.",
         },
         {
           year: "3-kurs",
