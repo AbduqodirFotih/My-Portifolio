@@ -59,7 +59,11 @@ export default function Projects() {
               return (
                 <Card
                   key={project.title}
-                  className="p-6 md:p-10 glass-effect hover:bg-primary/5 transition-all duration-500 hover:scale-[1.03] hover:shadow-2xl group"
+                  className={`p-6 md:p-10 glass-effect hover:bg-primary/5 transition-all duration-500 hover:scale-[1.03] hover:shadow-2xl group ${
+                    index === projects.length - 1 && projects.length % 2 === 1
+                      ? "md:col-span-2 md:w-[calc(50%-1.25rem)] md:mx-auto"
+                      : ""
+                  }`}
                 >
                   <div className="flex items-start justify-between mb-8">
                     <div
